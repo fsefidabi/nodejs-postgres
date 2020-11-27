@@ -1,0 +1,16 @@
+{
+  "name": "PostgreSQL",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clientPg.js",
+  "dependencies": {
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node jsonInput.js"
+  },
+  "keywords": ["postgres", "postgreSQL", "pg", "database"],
+  "author": "",
+  "license": "ISC"
+}
