@@ -3,5 +3,3 @@ build
 npm-debug.log
 .env
 .DS_Store
-client-pg.js
-pool-pg.js
