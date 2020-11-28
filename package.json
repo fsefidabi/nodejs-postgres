@@ -2,15 +2,21 @@
   "name": "PostgreSQL",
   "version": "1.0.0",
   "description": "",
-  "main": "clientPg.js",
+  "main": "",
   "dependencies": {
+    "chance": "^1.1.7",
     "pg": "^8.5.1"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node jsonInput.js"
+    "start": ""
   },
-  "keywords": ["postgres", "postgreSQL", "pg", "database"],
+  "keywords": [
+    "postgres",
+    "postgreSQL",
+    "pg",
+    "database"
+  ],
   "author": "",
   "license": "ISC"
 }
