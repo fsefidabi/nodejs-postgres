@@ -25,10 +25,11 @@ The default values for server information are: "username: postgres", "password: 
 
 #### Use
  ```js
- // To create new table (with product name) 
+ // To create new table 
 npm table 
 
-// The default name for table is "product". You can use "--table" or "-t" flag to create a table with your own selected name.
+// The default name for table is "product". 
+// You can use "--table" or "-t" flag to create a table with your own selected name.
 npm table --table sample
 //or
 npm table -t sample
@@ -39,7 +40,8 @@ npm table -t sample
  // To insert random data in created table
 npm insert
 
-// The default amount of rows which are added in each `npm insert` is 3. You can use "--number" or "-n" flag to change the amount of rows.
+// The default amount of rows which are added in each `npm insert` is 3. 
+// You can use "--number" or "-n" flag to change the amount of rows.
 npm insert --number 100
 //or
 npm insert -n 100
@@ -49,6 +51,7 @@ npm insert -n 100
  // To query on recorder data 
 npm query
 
-// This command will query on product table by default. If you've changed the table name, take care to use table flags here too.
+// This command will query on product table by default. 
+// If you've changed the table name, take care to use table flags here too.
 npm query sample
 ```
