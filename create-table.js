@@ -8,7 +8,7 @@ const argv = require('./argv');
   try {
     await client.query(
       `create table ${argv.table} (
-        id int NOT NULL,
+        id int NOT NULL PRIMARY KEY,
         product_name VARCHAR(50) NOT NULL,
         brand VARCHAR(50) NOT NULL, price INT NOT NULL,
         image_url VARCHAR(1000), isAvailable BOOLEAN NOT NULL,

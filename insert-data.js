@@ -16,6 +16,8 @@ const argv = require('./argv');
   }
 
   async function test (n) {
+    const startTime = Date.now()
+
     for (let i = 1; i <= n; i++) {
       const productInfo = randomData()
 
@@ -24,11 +26,22 @@ const argv = require('./argv');
 
       await client.query(`insert into ${argv.table} values($1, $2, $3, $4, $5, $6, $7, $8)`, ...productDetail)
     }
+
+    const endTime = Date.now()
+    calculateUsedTime(startTime, endTime)
+
     console.log(`${n} rows of data inserted successfully to ${argv.table} table`)
   }
 
   function checkExtraKeys (json) {
     const { id, product_name, brand, price, image_url, isAvailable, expiration_date, ...rest } = json
     return rest
+  }
+
+  function calculateUsedTime (firstTime, secondTime) {
+    const usedTime = (secondTime - firstTime) / 1000
+    const dataInsertPerSec = argv.number / usedTime
+    console.log(`${usedTime} takes long to insert ${argv.number} rows into table.`)
+    console.log(`${Math.floor(dataInsertPerSec)} rows can be inserted to table in each second.`)
   }
 })()
