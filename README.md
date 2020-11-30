@@ -30,9 +30,9 @@ npm run table
 
 // The default name for table is "product". 
 // You can use "--table" or "-t" flag to create a table with your own selected name.
-npm run table --table sample
+npm run table -- --table sample
 //or
-npm run table -t sample
+npm run table -- -t sample
 ```
 
 
@@ -42,9 +42,9 @@ npm run insert
 
 // The default amount of rows which are added in each `npm insert` is 3. 
 // You can use "--number" or "-n" flag to change the amount of rows.
-npm run insert --number 100
+npm run insert -- --number 100
 //or
-npm run insert -n 100
+npm run insert -- -n 100
 ```
 
 ```js
@@ -53,5 +53,5 @@ npm run query
 
 // This command will query on product table by default. 
 // If you've changed the table name, take care to use table flags here too.
-npm run query sample
+npm run query -- -t sample
 ```
