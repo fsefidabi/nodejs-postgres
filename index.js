@@ -7,7 +7,13 @@ const pool = new Pool({
   host: argv.host,
   port: argv.port,
   database: argv.db
-})
+});
+
+async function connectNewClient () {
+  const client = await pool.connect()
+  console.log(`connected to ${argv.db} database.`)
+  return client
+}
 
 module.exports = {
   connect: () => {
@@ -15,5 +21,6 @@ module.exports = {
   },
   end: () => {
     return pool.end()
-  }
+  },
+  connectNewClient
 }
