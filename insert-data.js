@@ -3,8 +3,7 @@ const randomData = require('./generate-random-data')
 const argv = require('./argv');
 
 (async () => {
-  const client = await pool.connect()
-  console.log(` connected to ${argv.db} database.`)
+  const client = await pool.connectNewClient()
 
   try {
     await insertNewRow (argv.number)
