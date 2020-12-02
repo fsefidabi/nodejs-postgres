@@ -3,10 +3,11 @@ const randomData = require('./generate-random-data')
 const argv = require('./argv');
 
 (async () => {
-  const client = await pool.connectNewClient()
+  const client = await pool.connect()
+  console.log(` connected to ${argv.db} database.`)
 
   try {
-    await test(argv.number)
+    await insertNewRow (argv.number)
   } catch (err) {
     console.log(err)
   } finally {
@@ -14,7 +15,7 @@ const argv = require('./argv');
     pool.end()
   }
 
-  async function test (n) {
+  async function insertNewRow (n) {
     const startTime = Date.now()
 
     for (let i = 1; i <= n; i++) {
