@@ -6,7 +6,7 @@ const argv = require('./argv');
   const client = await pool.connectNewClient()
 
   try {
-    await test(argv.number)
+    await insertNewRow (argv.number)
   } catch (err) {
     console.log(err)
   } finally {
@@ -14,7 +14,7 @@ const argv = require('./argv');
     pool.end()
   }
 
-  async function test (n) {
+  async function insertNewRow (n) {
     const startTime = Date.now()
 
     for (let i = 1; i <= n; i++) {
