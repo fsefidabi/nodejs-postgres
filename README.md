@@ -27,7 +27,7 @@ To change the port number, use ```-port``` or ```-p```.
 
 ### Use
 - Create new table
-```
+```js
 npm run table 
 
 // The default name for table is "product". 
