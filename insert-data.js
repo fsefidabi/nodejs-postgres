@@ -6,7 +6,7 @@ const argv = require('./argv');
   const client = await pool.connectNewClient()
 
   try {
-    await insertNewRows (argv.number)
+    await insertNewRows(argv.number)
   } catch (err) {
     console.log(err)
   } finally {
@@ -20,9 +20,9 @@ const argv = require('./argv');
     for (let i = 1; i <= n; i++) {
       const productInfo = randomData()
 
-      const extraInfo = checkExtraKeys(productInfo)
+      const extraInfo = checkIfExtraKeyExist(productInfo)
       const productDetail = [[productInfo.id, productInfo.product_name, productInfo.brand, productInfo.price, productInfo.image_url, productInfo.isAvailable, productInfo.expiration_date, extraInfo]]
-
+      console.log(productDetail)
       await client.query(`insert into ${argv.table} values($1, $2, $3, $4, $5, $6, $7, $8)`, ...productDetail)
     }
 
@@ -32,9 +32,11 @@ const argv = require('./argv');
     console.log(`${n} rows of data inserted successfully to ${argv.table} table`)
   }
 
-  function checkExtraKeys (json) {
+  function checkIfExtraKeyExist (json) {
     const { id, product_name, brand, price, image_url, isAvailable, expiration_date, ...rest } = json
-    return rest
+    if (Object.keys(rest).length !== 0) {
+      return rest
+    }
   }
 
   function calculateElapsedTime (startTime, endTime) {

@@ -7,7 +7,7 @@ const pool = new Pool({
   host: argv.host,
   port: argv.port,
   database: argv.db
-});
+})
 
 async function connectNewClient () {
   const client = await pool.connect()
