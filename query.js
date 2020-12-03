@@ -5,7 +5,7 @@ const argv = require('./argv');
   const client = await pool.connectNewClient()
 
   try {
-    const results = await client.query(`select * from ${argv.table} where id < 1`)
+    const results = await client.query(`select count(*) from ${argv.table}`)
     // const results = await client.query(`select product_name, price from ${argv.table} where extra_information -> 'size' ->> 'height' = '70'`)
     console.table(results.rows)
   } catch (err) {

@@ -6,7 +6,7 @@ const argv = require('./argv');
   const client = await pool.connectNewClient()
 
   try {
-    await insertNewRow (argv.number)
+    await insertNewRows (argv.number)
   } catch (err) {
     console.log(err)
   } finally {
@@ -14,8 +14,8 @@ const argv = require('./argv');
     pool.end()
   }
 
-  async function insertNewRow (n) {
-    const startTime = Date.now()
+  async function insertNewRows (n) {
+    const timeBeforeInsertion = Date.now()
 
     for (let i = 1; i <= n; i++) {
       const productInfo = randomData()
@@ -26,8 +26,8 @@ const argv = require('./argv');
       await client.query(`insert into ${argv.table} values($1, $2, $3, $4, $5, $6, $7, $8)`, ...productDetail)
     }
 
-    const endTime = Date.now()
-    calculateUsedTime(startTime, endTime)
+    const timeAfterInsertion = Date.now()
+    calculateElapsedTime(timeBeforeInsertion, timeAfterInsertion)
 
     console.log(`${n} rows of data inserted successfully to ${argv.table} table`)
   }
@@ -37,10 +37,10 @@ const argv = require('./argv');
     return rest
   }
 
-  function calculateUsedTime (firstTime, secondTime) {
-    const usedTime = (secondTime - firstTime) / 1000
-    const dataInsertPerSec = argv.number / usedTime
-    console.log(`${usedTime} takes long to insert ${argv.number} rows into table.`)
-    console.log(`${Math.floor(dataInsertPerSec)} rows can be inserted to table in each second.`)
+  function calculateElapsedTime (startTime, endTime) {
+    const elapsedTimeInSec = (endTime - startTime) / 1000
+    const insertionRatePerSec = argv.number / elapsedTimeInSec
+    console.log(`${elapsedTimeInSec} takes long to insert ${argv.number} rows into table.`)
+    console.log(`${Math.floor(insertionRatePerSec)} rows can be inserted to table in each second.`)
   }
 })()
