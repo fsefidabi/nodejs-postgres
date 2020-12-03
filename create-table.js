@@ -1,5 +1,5 @@
 const pool = require('./index')
-const argv = require('./argv');
+const argv = require('./library/argv');
 
 (async () => {
   const client = await pool.connectNewClient()
@@ -7,11 +7,12 @@ const argv = require('./argv');
   try {
     await client.query(
       `create table ${argv.table} (
-        id int NOT NULL PRIMARY KEY,
+        id int NOT NULL,
         product_name VARCHAR(50) NOT NULL,
-        brand VARCHAR(50) NOT NULL, price INT NOT NULL,
-        image_url VARCHAR(1000), isAvailable BOOLEAN NOT NULL,
-        expiration_date DATE,
+        brand VARCHAR(50) NOT NULL,
+        price INT NOT NULL,
+        image_url VARCHAR(1000),
+        isAvailable BOOLEAN NOT NULL,
         extra_information JSON 
       )`
     )

@@ -36,5 +36,6 @@ const port = yargs.port || yargs.p || 5432
 const db = yargs.db || yargs.d || 'test'
 const table = yargs.table || yargs.t || 'product'
 const number = yargs.number || yargs.n || 3
+const fileName = yargs.file || yargs.f || 'sample'
 
-module.exports = { user, password, host, port, db, table, number }
+module.exports = { user, password, host, port, db, table, number, fileName }

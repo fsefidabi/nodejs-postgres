@@ -1,5 +1,5 @@
 {
-  "name": "PostgreSQL",
+  "name": "postgres",
   "version": "1.0.0",
   "description": "A node.js module for connecting to postgreSQL database, using pg module.",
   "main": "index.js",
@@ -7,6 +7,7 @@
     "chance": "^1.1.7",
     "eslint": "^7.14.0",
     "pg": "^8.5.1",
+    "pg-copy-streams": "^5.1.1",
     "standard": "^16.0.3",
     "yargs": "^16.1.1"
   },
@@ -15,7 +16,9 @@
     "start": "node index.js",
     "table": "node create-table.js",
     "insert": "node insert-data.js",
-    "query": "node query.js"
+    "query": "node query.js",
+    "csv-insert": "node bulk-insert/insert-from-csv-file.js",
+    "bulk-insert": "node bulk-insert/generate-and-insert-data.js"
   },
   "keywords": [
     "postgres",

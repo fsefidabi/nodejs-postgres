@@ -1,5 +1,5 @@
 const pool = require('./index')
-const argv = require('./argv');
+const argv = require('./library/argv');
 
 (async () => {
   const client = await pool.connectNewClient()

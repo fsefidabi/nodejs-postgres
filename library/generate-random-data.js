@@ -1,7 +1,6 @@
 const Chance = require('chance')
 
 const chance = new Chance()
-
 const generateRandomData = () => {
   return {
     id: chance.integer({ min: 0, max: 15000 }),

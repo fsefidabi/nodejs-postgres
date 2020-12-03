@@ -1,5 +1,5 @@
 const { Pool } = require('pg')
-const argv = require('./argv')
+const argv = require('./library/argv')
 
 const pool = new Pool({
   user: argv.user,
