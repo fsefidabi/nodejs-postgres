@@ -20,7 +20,7 @@ const argv = require('./argv');
     for (let i = 1; i <= n; i++) {
       const productInfo = randomData()
 
-      const extraInfo = checkIfExtraKeyExist(productInfo)
+      const extraInfo = checkIfExtraInfoExist(productInfo)
       const productDetail = [[productInfo.id, productInfo.product_name, productInfo.brand, productInfo.price, productInfo.image_url, productInfo.isAvailable, productInfo.expiration_date, extraInfo]]
       console.log(productDetail)
       await client.query(`insert into ${argv.table} values($1, $2, $3, $4, $5, $6, $7, $8)`, ...productDetail)
@@ -32,7 +32,7 @@ const argv = require('./argv');
     console.log(`${n} rows of data inserted successfully to ${argv.table} table`)
   }
 
-  function checkIfExtraKeyExist (json) {
+  function checkIfExtraInfoExist (json) {
     const { id, product_name, brand, price, image_url, isAvailable, expiration_date, ...rest } = json
     if (Object.keys(rest).length !== 0) {
       return rest
