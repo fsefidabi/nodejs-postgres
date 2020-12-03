@@ -27,7 +27,8 @@ To change the port number, use ```-port``` or ```-p```.
 
 ### Use
 - Create new table
-```
+
+```js
 npm run table 
 
 // The default name for table is "product". 
@@ -39,7 +40,8 @@ npm run table -- -t tableName
 
 The default value of table name in each of the following commands has been set to 'product'. If you've created a table with a specific name, remember to use ```--table``` or ```-t``` flag to assign your own table name.
 - Insert random data in created table
-```
+
+```js
 npm run insert
 
 // The default amount of rows which are added in each `npm insert` is 3. 
@@ -50,20 +52,23 @@ npm run insert -- -n 100
 ```
 
 - Generate and insert bulk random data
-```
+
+```js
 npm run bulk-insert
 ```
 
 - Insert data from CSV file
-```
- // Use '--file' or '-f' flag to specify the CSV file name.
- // The default value has been set on sample
+
+```js
+// Use '--file' or '-f' flag to specify the CSV file name.
+// The default value has been set on sample
 npm run csv-insert -- --file sample
 //or
 npm run csv-insert -- -f sample
 ```
 
 - Query on recorded data
-```
+
+```js
 npm run query
 ```
