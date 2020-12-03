@@ -8,6 +8,7 @@ const generateRandomData = () => {
     product_name: chance.string({ length: 50, alpha: true }),
     brand: chance.string({ alpha: true }),
     price: chance.integer({ min: 0, max: 200 }),
+    image_url: chance.string({ length: 50, alpha: true }),
     isAvailable: chance.bool(),
     'color(s)': [chance.string({ length: 10 }), chance.string({ length: 10 })],
     size: {
