@@ -27,6 +27,10 @@ const yargs = require('yargs/yargs')(process.argv.slice(2))
     alias: 'n',
     describe: 'Number of random data (default value: "1")'
   })
+  .option('file', {
+    alias: 'f',
+    describe: 'name of the .CSV file (default value: "sample")'
+  })
   .argv
 
 const user = yargs.user || yargs.u || 'postgres'

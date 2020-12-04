@@ -17,8 +17,8 @@
     "table": "node create-table.js",
     "insert": "node insert-data.js",
     "query": "node query.js",
-    "csv-insert": "node bulk-insert/insert-from-csv-file.js",
-    "bulk-insert": "node bulk-insert/generate-and-insert-data.js"
+    "copy": "node bulk-insert/copy-csv-file.js",
+    "bulk-insert": "node bulk-insert/generate-insert-stream.js"
   },
   "keywords": [
     "postgres",

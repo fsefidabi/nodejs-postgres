@@ -62,9 +62,9 @@ npm run bulk-insert
 ```js
 // Use '--file' or '-f' flag to specify the CSV file name.
 // The default value has been set on sample
-npm run csv-insert -- --file sample
+npm run copy -- --file sample
 //or
-npm run csv-insert -- -f sample
+npm run copy -- -f sample
 ```
 
 - Query on recorded data
