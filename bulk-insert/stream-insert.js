@@ -1,11 +1,12 @@
 const { Readable, Writable, pipeline } = require('stream')
 const format = require('pg-format')
-const { pool } = require('../index')
+const { pool, createTable } = require('../index')
 const randomData = require('../library/generate-random-data')
 const calculateTime = require('../library/calculate-elapsed-time')
 
 async function streamQuery (query, pipes = []) {
   try {
+    await createTable()
     await insertNewRows()
   } catch (err) {
     console.log(err)

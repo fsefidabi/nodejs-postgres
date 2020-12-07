@@ -1,14 +1,14 @@
 const { Readable, Writable, pipeline } = require('stream')
 const batch2 = require('batch2')
 const bPromise = require('bluebird')
-const { database } = require('../library/reusable-variables')
+const { testDb, tableName } = require('../library/reusable-variables')
 const randomData = require('../library/generate-random-data')
 
 const initOptions = {
   promiseLib: bPromise
 }
 const pgp = require('pg-promise')(initOptions)
-const db = pgp(database)
+const db = pgp(testDb)
 const cs = new pgp.helpers.ColumnSet([
   { name: 'launch_count' },
   { name: 'launch_time' },
@@ -34,8 +34,8 @@ const cs = new pgp.helpers.ColumnSet([
   { name: 'event_purchase_count' },
   { name: 'user_info_name' },
   { name: 'user_info_birthday' },
-  { name: 'user_info_categories' },
-], { table: 'users' });
+  { name: 'user_info_categories' }
+], { table: `${tableName}` });
 
 (async () => {
   try {
@@ -56,7 +56,6 @@ const cs = new pgp.helpers.ColumnSet([
     const writeStreamToTable = new Writable({
       objectMode: true,
       async write (chunk, encoding, callback) {
-        // console.log(chunk)
         await db.none(pgp.helpers.insert(chunk, cs))
         callback()
       }
@@ -71,13 +70,13 @@ const cs = new pgp.helpers.ColumnSet([
   }
 
   let count, oldCount
-  db.any('select count (*) from users')
+  db.any(`select count (*) from ${tableName}`)
     .then(data => {
       oldCount = Number(data[0].count)
     })
 
   setInterval(() => {
-    db.any('select count (*) from users')
+    db.any(`select count (*) from ${tableName}`)
       .then(data => {
         count = Number(data[0].count)
         const rate = count - oldCount

@@ -1,29 +1,28 @@
 const { Pool } = require('pg')
-const { postgres, database } = require('./library/reusable-variables')
-const argv = require('./library/argv');
+const { postgres, testDb, tableName } = require('./library/reusable-variables');
 
 (async function createDatabaseIfNotExists () {
-  const pool = new Pool(postgres);
+  const pool = new Pool(postgres)
   try {
-    await pool.query(`CREATE DATABASE test`)
-    console.log(`test database created successfully. Connecting to test...`)
+    await pool.query('CREATE DATABASE test')
+    console.log('test database created successfully. Connecting to test...')
   } catch (err) {
     if (err.message.indexOf('already exists')) {
-      console.log(`test database exists. Connecting to test...`)
+      console.log('test database exists. Connecting to test...')
     } else {
       console.log(err)
     }
   } finally {
     await pool.end()
   }
-})();
+})()
 
-const pool = new Pool(database);
+const pool = new Pool(testDb)
 
-async function connectToDatabase () {
+async function createTable () {
   try {
     await pool.query(
-      `create table if not exists users (
+      `create table if not exists ${tableName} (
         id SERIAL,
         launch_count INT NOT NULL,
         launch_time DATE NOT NULL,
@@ -57,9 +56,4 @@ async function connectToDatabase () {
   }
 }
 
-(async function(){
-  await connectToDatabase()
-
-})()
-
-module.exports = { pool }
+module.exports = { pool, createTable }

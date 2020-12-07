@@ -4,5 +4,6 @@ npm-debug.log
 .env
 .DS_Store
 .eslintrc.js
-query.js
-/library/organize-input-keys.js
+./query.js
+prisma
+./bulk-insert/prisma.js

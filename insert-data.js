@@ -1,10 +1,11 @@
-const { pool } = require('./index')
+const { pool, createTable } = require('./index')
 const randomData = require('./library/generate-random-data')
 const argv = require('./library/argv')
-const { columns } = require('./library/reusable-variables');
+const { tableName, columns } = require('./library/reusable-variables');
 
 (async () => {
   try {
+    await createTable()
     await insertNewRows(argv.number)
   } catch (err) {
     console.log(err)
@@ -18,7 +19,7 @@ const { columns } = require('./library/reusable-variables');
     for (let i = 1; i <= n; i++) {
       const user = randomData()
       const newUser = Object.values(user)
-      await pool.query(`insert into users (${columns}) 
+      await pool.query(`insert into ${tableName} (${columns}) 
         values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25) 
         returning id`, newUser)
     }
@@ -26,7 +27,7 @@ const { columns } = require('./library/reusable-variables');
     const timeAfterInsertion = Date.now()
     calculateElapsedTime(timeBeforeInsertion, timeAfterInsertion)
 
-    console.log(`${n} rows inserted successfully to users table`)
+    console.log(`${n} rows inserted successfully to ${tableName} table`)
   }
 })()
 

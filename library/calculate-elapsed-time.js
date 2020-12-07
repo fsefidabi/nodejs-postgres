@@ -1,5 +1,6 @@
+const { tableName } = require('./reusable-variables')
 async function calculateTime (connection) {
-  const query = `select count (*) from users`
+  const query = `select count (*) from ${tableName}`
 
   let count = 0
   let oldCount = await connection.query(query)
