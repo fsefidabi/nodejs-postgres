@@ -7,11 +7,14 @@ The batch insert can be performed either by using "pg-promise" or "pg-format" mo
 
 ### Quick Start
 
- ```js
+ ```
 git clone https://github.com/fsefidabi/postgres-node.git
 
 npm i
+  ```
 
+### Use
+```js
 //Insert single rows:
 npm run insert
 
