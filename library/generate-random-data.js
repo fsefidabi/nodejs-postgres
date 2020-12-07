@@ -53,7 +53,7 @@ const generateRandomData = () => {
       month: 2
     }),
     event_purchase_last_occurrence: chance.date({
-      year: 2019,
+      year: chance.year({ min: 2015, max: 2020 }),
       month: 3
     }),
     event_purchase_count: chance.integer({ min: 1, max: 4 }),

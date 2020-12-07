@@ -5,10 +5,10 @@ const { postgres, testDb, tableName } = require('./library/reusable-variables');
   const pool = new Pool(postgres)
   try {
     await pool.query('CREATE DATABASE test')
-    console.log('test database created successfully. Connecting to test...')
+    console.log('test database created successfully. Connected to test database.')
   } catch (err) {
     if (err.message.indexOf('already exists')) {
-      console.log('test database exists. Connecting to test...')
+      console.log('test database exists. Connected to test database.')
     } else {
       console.log(err)
     }

@@ -4,6 +4,6 @@ npm-debug.log
 .env
 .DS_Store
 .eslintrc.js
-./query.js
+query/query.js
 prisma
 ./bulk-insert/prisma.js
