@@ -4,7 +4,8 @@ const condition1 = {
   launch_count: 210,
   connection: 'WiFi',
   tags: '{male}',
-  event_purchase_last_occurrence: '2019-2-25'
+  event_purchase_count: 3,
+  app_version: '0.8.9'
 
 }
 
