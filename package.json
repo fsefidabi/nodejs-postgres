@@ -25,7 +25,7 @@
     "pg-format": "node bulk-insert/batch-pg-format.js",
     "single": "node bulk-insert/single-stream.js",
     "prisma": "node bulk-insert/prisma.js",
-    "query": "node query/query.js",
+    "pg-query": "node query/query.js",
     "pgp-query": "node query/pgp-query.js"
   },
   "keywords": [

@@ -14,13 +14,26 @@ npm i
   ```
 
 ### Use
+
+- Insert new random rows
+
 ```js
-//Insert single rows:
+// Insert single rows:
 npm run insert
 
-//Batch insert using 'pg-promise' module:
+// Batch insert using 'pg-promise' module:
 npm run pg-promise
 
-//Batch insert using 'pg-format' module:
+// Batch insert using 'pg-format' module:
 npm run pg-format
+```
+
+- Query on records
+```js
+// Using 'node-postgres' module: 
+npm run pg-query
+
+// Using 'pg-promise' module: 
+npm run pgp-query
+
 ```
