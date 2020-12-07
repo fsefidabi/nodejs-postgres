@@ -1,17 +1,13 @@
-const pool = require('./index')
-const argv = require('./library/argv');
+const { pool } = require('./index');
 
 (async () => {
-  const client = await pool.connectNewClient()
-
   try {
-    const results = await client.query(`select count(*) from ${argv.table}`)
-    // const results = await client.query(`select product_name, price from ${argv.table} where extra_information -> 'size' ->> 'height' = '70'`)
+    const results = await pool.query(`select count(*) from product`)
+    // const results = await client.query(`select product_name, price from product where extra_information -> 'size' ->> 'height' = '70'`)
     console.table(results.rows)
   } catch (err) {
     console.log(err)
   } finally {
-    client.release()
     pool.end()
   }
 })()

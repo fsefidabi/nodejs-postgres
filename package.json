@@ -4,21 +4,25 @@
   "description": "A node.js module for connecting to postgreSQL database, using pg module.",
   "main": "index.js",
   "dependencies": {
+    "batch2": "^2.0.0",
+    "bluebird": "^3.7.2",
     "chance": "^1.1.7",
-    "eslint": "^7.14.0",
+    "config": "^3.3.3",
     "pg": "^8.5.1",
-    "pg-copy-streams": "^5.1.1",
-    "standard": "^16.0.3",
+    "pg-format": "^1.0.4",
+    "pg-promise": "^10.8.1",
     "yargs": "^16.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "standard": "^16.0.3"
+  },
   "scripts": {
     "start": "node index.js",
-    "table": "node create-table.js",
     "insert": "node insert-data.js",
-    "query": "node query.js",
-    "copy": "node bulk-insert/copy-csv-file.js",
-    "bulk-insert": "node bulk-insert/generate-insert-stream.js"
+    "pg-promise": "node bulk-insert/batch-pg-promise.js",
+    "pg-format": "node bulk-insert/batch-pg-format.js",
+    "single": "node bulk-insert/single-stream.js"
   },
   "keywords": [
     "postgres",
@@ -26,6 +30,6 @@
     "pg",
     "database"
   ],
-  "author": "Farzaneh",
+  "author": "Farzaneh Sefidabi",
   "license": "ISC"
 }

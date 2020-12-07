@@ -1,10 +1,17 @@
-const argv = require('./argv')
+async function calculateTime (connection) {
+  const query = `select count (*) from users`
 
-function calculateElapsedTime (startTime, endTime) {
-  const elapsedTimeInSec = (endTime - startTime) / 1000
-  const insertionRatePerSec = argv.number / elapsedTimeInSec
-  console.log(`${elapsedTimeInSec} takes long to insert ${argv.number} rows into table.`)
-  console.log(`${Math.floor(insertionRatePerSec)} rows can be inserted to table in each second.`)
+  let count = 0
+  let oldCount = await connection.query(query)
+  oldCount = Number(oldCount.rows[0].count)
+
+  setInterval(async () => {
+    count = await connection.query(query)
+    count = Number(count.rows[0].count)
+    const rate = count - oldCount
+    console.log(`Insertion rate: ${rate} rows/sec`)
+    oldCount = count
+  }, 1000)
 }
 
-module.exports = calculateElapsedTime
+module.exports = calculateTime
