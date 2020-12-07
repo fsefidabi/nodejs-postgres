@@ -21,10 +21,9 @@
   },
   "scripts": {
     "start": "node index.js",
-    "insert": "node insert-data.js",
+    "insert": "node bulk-insert/single-stream.js",
     "pg-promise": "node bulk-insert/batch-pg-promise.js",
-    "pg-format": "node bulk-insert/batch-pg-format.js",
-    "single": "node bulk-insert/single-stream.js"
+    "pg-format": "node bulk-insert/batch-pg-format.js"
   },
   "keywords": [
     "postgres",
