@@ -19,7 +19,7 @@ npm i
 
 ```js
 // Insert single rows:
-npm run insert
+npm run single
 
 // Batch insert using 'pg-promise' module:
 npm run pg-promise
