@@ -6,7 +6,6 @@ const condition1 = {
   tags: '{male}',
   event_purchase_count: 3,
   app_version: '0.8.9'
-
 }
 
 const condition2 = {
@@ -24,8 +23,8 @@ const condition3 = {
   token_status: 'ALLOWED'
 }
 
-const values = (Object.values(condition1))
-const queryText = selectQuery(condition1);
+const values = (Object.values(condition3))
+const queryText = selectQuery(condition3);
 
 (async () => {
   try {
@@ -41,8 +40,8 @@ const queryText = selectQuery(condition1);
 function selectQuery (obj) {
   let queryText = `select count(*) from users where ${Object.keys(obj)[0]} in ($1)`
   const conditionAmount = Object.keys(obj).length
-    for (let i = 1; i < conditionAmount; i++) {
-      queryText = `${queryText} and ${Object.keys(obj)[i]} in ($${i+1})`
-    }
+  for (let i = 1; i < conditionAmount; i++) {
+    queryText = `${queryText} and ${Object.keys(obj)[i]} in ($${i + 1})`
+  }
   return queryText
 }

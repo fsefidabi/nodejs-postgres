@@ -1,41 +1,8 @@
 const { Readable, Writable, pipeline } = require('stream')
 const batch2 = require('batch2')
-const bPromise = require('bluebird')
-const { testDb, tableName } = require('../library/reusable-variables')
-const randomData = require('../library/generate-random-data')
-
-const initOptions = {
-  promiseLib: bPromise
-}
-const pgp = require('pg-promise')(initOptions)
-const db = pgp(testDb)
-const cs = new pgp.helpers.ColumnSet([
-  { name: 'launch_count' },
-  { name: 'launch_time' },
-  { name: 'install_date' },
-  { name: 'os_version' },
-  { name: 'device_model' },
-  { name: 'device_token' },
-  { name: 'device_type' },
-  { name: 'user_id' },
-  { name: 'token_status' },
-  { name: 'ip' },
-  { name: 'connection' },
-  { name: 'app_version' },
-  { name: 'created' },
-  { name: 'modified' },
-  { name: 'status' },
-  { name: 'subscriptions' },
-  { name: 'timezone' },
-  { name: 'ad_id' },
-  { name: 'tags' },
-  { name: 'event_purchase_first_occurrence' },
-  { name: 'event_purchase_last_occurrence' },
-  { name: 'event_purchase_count' },
-  { name: 'user_info_name' },
-  { name: 'user_info_birthday' },
-  { name: 'user_info_categories' }
-], { table: `${tableName}` });
+const { pgp, db, cs } = require('../library/pgp-variables')
+const { tableName } = require('../library/reusable-variables')
+const randomData = require('../library/generate-random-data');
 
 (async () => {
   try {
@@ -44,31 +11,35 @@ const cs = new pgp.helpers.ColumnSet([
     console.log(err)
   }
 
-  async function insertNewRows () {
-    const dataGeneratorStream = new Readable({
-      objectMode: true,
-      read () {
-        const user = randomData()
-        this.push(user)
-      }
-    })
+  calculateInsertionRate()
+})()
 
-    const writeStreamToTable = new Writable({
-      objectMode: true,
-      async write (chunk, encoding, callback) {
-        await db.none(pgp.helpers.insert(chunk, cs))
-        callback()
-      }
-    })
+function insertNewRows () {
+  const dataGeneratorStream = new Readable({
+    objectMode: true,
+    read () {
+      const user = randomData()
+      this.push(user)
+    }
+  })
 
-    pipeline(
-      dataGeneratorStream,
-      batch2.obj({ size: 500 }),
-      writeStreamToTable,
-      err => console.log(err)
-    )
-  }
+  const writeStreamToTable = new Writable({
+    objectMode: true,
+    async write (chunk, encoding, callback) {
+      await db.none(pgp.helpers.insert(chunk, cs))
+      callback()
+    }
+  })
 
+  pipeline(
+    dataGeneratorStream,
+    batch2.obj({ size: 500 }),
+    writeStreamToTable,
+    err => console.log(err)
+  )
+}
+
+function calculateInsertionRate () {
   let count, oldCount
   db.any(`select count (*) from ${tableName}`)
     .then(data => {
@@ -85,4 +56,4 @@ const cs = new pgp.helpers.ColumnSet([
       })
       .catch(err => console.log(err))
   }, 1000)
-})()
+}

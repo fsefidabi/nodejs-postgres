@@ -27,10 +27,17 @@ async function streamQuery (query, pipes = []) {
     const writeStreamToTable = new Writable({
       objectMode: true,
       async write (chunk, encoding, callback) {
-        if (chunk.length <= 25) {
+        const chunkLength = calculateChunkLength()
+        if (chunk.length === chunkLength) {
           await pool.query(query, chunk)
         } else {
-          await pool.query(format(query, chunk))
+          const flattedChunk = chunk.map(data => data.map(col => {
+            if (col instanceof Array) {
+              col = `${col}`
+            }
+            return col
+          }))
+          await pool.query(format(query, flattedChunk))
         }
         callback()
       }
@@ -47,6 +54,12 @@ async function streamQuery (query, pipes = []) {
       )
     }).catch(err => console.log(err))
   }
+}
+
+function calculateChunkLength () {
+  const sampleData = randomData()
+  const chunkLength = Object.keys(sampleData).length
+  return chunkLength
 }
 
 module.exports = streamQuery
