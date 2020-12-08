@@ -1,12 +1,14 @@
 {
-  "Product": {
-    "dbConfig": {
-      "host": "localhost",
-      "port": 5432,
-      "username": "postgres",
-      "password": "postgres",
-      "db": "postgres",
-      "tableName": "users"
-    }
+  "dbConfig": {
+    "user": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "password": "postgres"
+  },
+  "Device": {
+    "tableName": "devices"
+  },
+  "Batch-flow": {
+    "size": 500
   }
 }

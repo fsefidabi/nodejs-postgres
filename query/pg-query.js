@@ -1,4 +1,4 @@
-const { pool } = require('../index')
+const { pool } = require('../lib/createTable')
 
 const condition1 = {
   launch_count: 210,

@@ -5,4 +5,4 @@ npm-debug.log
 .DS_Store
 .eslintrc.js
 prisma
-./bulk-insert/prisma.js
+stream-insert/prisma.js

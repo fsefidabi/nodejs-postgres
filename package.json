@@ -2,31 +2,24 @@
   "name": "postgres",
   "version": "1.0.0",
   "description": "A node.js module for connecting to postgreSQL database, using pg module.",
-  "main": "index.js",
+  "main": "lib/createTable.js",
   "dependencies": {
-    "@prisma/client": "^2.12.1",
     "batch2": "^2.0.0",
     "bluebird": "^3.7.2",
     "chance": "^1.1.7",
     "config": "^3.3.3",
     "pg": "^8.5.1",
-    "pg-format": "^1.0.4",
     "pg-promise": "^10.8.1",
     "yargs": "^16.1.1"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.12.1",
     "eslint": "^7.14.0",
     "standard": "^16.0.3"
   },
   "scripts": {
-    "start": "node index.js",
-    "pg-promise": "node bulk-insert/batch-pg-promise.js",
-    "pg-format": "node bulk-insert/batch-pg-format.js",
-    "single": "node bulk-insert/single-stream.js",
-    "prisma": "node bulk-insert/prisma.js",
-    "pg-query": "node query/pg-query.js",
-    "pgp-query": "node query/pgp-query.js"
+    "bulk": "node stream-insert/bulk-insert.js",
+    "single": "node stream-insert/single-insert.js",
+    "query": "node query/pg-query.js"
   },
   "keywords": [
     "postgres",

@@ -21,10 +21,10 @@ npm i
 // Insert single rows:
 npm run single
 
-// Batch insert using 'pg-promise' module:
+// Batch stream-insert using 'pg-promise' module:
 npm run pg-promise
 
-// Batch insert using 'pg-format' module:
+// Batch stream-insert using 'pg-format' module:
 npm run pg-format
 ```
 
