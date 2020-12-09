@@ -1,5 +1,6 @@
 const { Pool } = require('pg')
 const config = require('config')
+const logger = require('pino')()
 
 const dbConfig = config.get('dbConfig');
 
@@ -8,17 +9,17 @@ const dbConfig = config.get('dbConfig');
 
   try {
     await pool.query('CREATE DATABASE test')
-    console.log('"test" database created successfully.')
+    logger.info('"test" database created successfully.')
   } catch (err) {
     if (err.message.indexOf('does not exist')) {
-      console.log('"test" database already exists.')
+      logger.info('"test" database already exists.')
     } else {
-      console.log(err)
+      logger.info(err)
     }
   } finally {
     await pool.end()
   }
-})();
+})()
 
 const pool = new Pool({ ...dbConfig, database: "test" })
 

@@ -1,5 +1,6 @@
 const { Readable, Writable, pipeline } = require('stream')
 const config = require('config')
+const logger = require('pino')()
 const { pool } = require('../db')
 const { createTable } = require('../lib/createTable')
 const randomData = require('../lib/generate-random-data')
@@ -11,11 +12,11 @@ const tableName = config.get('Device.tableName');
 (async () => {
   try {
     await createTable()
-    await calculateTime(pool)
     await insertNewRows()
   } catch (err) {
-    console.log(err)
+    logger.info(err)
   }
+  await calculateTime(pool)
 })()
 
 function insertNewRows () {
@@ -41,7 +42,7 @@ function insertNewRows () {
   pipeline(
     dataGeneratorStream,
     insertStreamToTable,
-    err => console.error(err)
+    err => logger.info(err)
   )
 }
 

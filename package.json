@@ -10,6 +10,7 @@
     "config": "^3.3.3",
     "pg": "^8.5.1",
     "pg-promise": "^10.8.1",
+    "pino": "^6.7.0",
     "yargs": "^16.1.1"
   },
   "devDependencies": {
