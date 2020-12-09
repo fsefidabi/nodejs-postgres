@@ -18,22 +18,14 @@ npm i
 - Insert new random rows
 
 ```js
-// Insert single rows:
+// Single insertion (using "pg" package):
 npm run single
 
-// Batch stream-insert using 'pg-promise' module:
-npm run pg-promise
-
-// Batch stream-insert using 'pg-format' module:
-npm run pg-format
+// Batch insertion (using "pg-promise" package):
+npm run bulk
 ```
 
 - Query on records
 ```js
-// Using 'node-postgres' module: 
-npm run pg-query
-
-// Using 'pg-promise' module: 
-npm run pgp-query
-
+npm run query
 ```
