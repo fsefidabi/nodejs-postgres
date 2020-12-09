@@ -2,9 +2,9 @@ const { Readable, Writable, pipeline } = require('stream')
 const config = require('config')
 const logger = require('pino')()
 const { pool } = require('../db')
-const { createTable } = require('../lib/createTable')
-const randomData = require('../lib/generate-random-data')
-const calculateTime = require('../lib/calculate-elapsed-time')
+const { createTable } = require('../lib/utils/createTable')
+const randomData = require('../lib/utils/generate-random-data')
+const calculateTime = require('../lib/utils/calc-insertion-time')
 const { columns } = require('../lib/schema')
 
 const tableName = config.get('Device.tableName');
