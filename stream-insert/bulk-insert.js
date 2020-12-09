@@ -6,10 +6,10 @@ const logger = require('pino')()
 const { createTable } = require('../lib/utils/createTable')
 const randomData = require('../lib/utils/generate-random-data')
 const { columns } = require('../lib/schema')
+const batchSize = require('../lib/argv')
 
 const dbConfig = config.get('dbConfig')
 const tableName = config.get('Device.tableName')
-const batchSize = config.get('Batch-flow.size')
 const initOptions = { promiseLib: bPromise }
 const pgp = require('pg-promise')(initOptions)
 const db = pgp({ ...dbConfig, database: 'test' })
@@ -50,7 +50,7 @@ function insertNewRows () {
 
   pipeline(
     dataGeneratorStream,
-    batch2.obj({ size: batchSize }),
+    batch2.obj({ size: batchSize}),
     insertStreamToTable,
     err => logger.info(err)
   )
