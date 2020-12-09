@@ -1,26 +1,29 @@
-const { pool } = require('../lib/createTable')
+const config = require('config')
+const { pool } = require('../db/index')
+
+const tableName = config.get('Device.tableName')
 
 const condition1 = {
-  launch_count: 210,
+  '"launchCount"': 210,
   connection: 'WiFi',
   tags: '{male}',
   event_purchase_count: 3,
-  app_version: '0.8.9'
+  '"appVersion"': '0.8.9'
 }
 
 const condition2 = {
-  os_version: '1.1.1-staging',
-  device_model: 'S6',
-  app_version: '0.8.9',
-  user_info_categories: '{berry,pumbkin,apple,golabi}'
+  '"osVersion"': '1.1.1-staging',
+  '"deviceModel"': 'S6',
+  '"appVersion"': '0.8.9',
+  '"userInfo_categories"': '{berry,pumbkin,apple,golabi}'
 }
 
 const condition3 = {
   tags: '{male,vip,L1}',
-  user_info_categories: '{golabi}',
+  '"userInfo_categories"': '{golabi}',
   event_purchase_count: 2,
   connection: '3G',
-  token_status: 'ALLOWED'
+  '"tokenStatus"': 'ALLOWED'
 }
 
 const values = (Object.values(condition3))
@@ -38,7 +41,7 @@ const queryText = selectQuery(condition3);
 })()
 
 function selectQuery (obj) {
-  let queryText = `select count(*) from users where ${Object.keys(obj)[0]} in ($1)`
+  let queryText = `select count(*) from ${tableName} where ${Object.keys(obj)[0]} in ($1)`
   const conditionAmount = Object.keys(obj).length
   for (let i = 1; i < conditionAmount; i++) {
     queryText = `${queryText} and ${Object.keys(obj)[i]} in ($${i + 1})`
