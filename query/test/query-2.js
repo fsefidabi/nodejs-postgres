@@ -3,11 +3,11 @@ const tableName = config.get('Device.tableName')
 const queryBuilder = require('./testQueryBuilder')
 
 const condition = {
-  '"osVersion"': '1.1.1',
-  '"deviceModel"': 'S6',
-  '"appVersion"': '0.9.2',
-  '"userInfo_categories"': ['apple'],
-  '"event_purchase_lastOccurrence"': '2018-01-01'
+  "osVersion": '1.1.1',
+  "deviceModel": 'S6',
+  "appVersion": '0.9.2',
+  "userInfo_categories": ['apple'],
+  "event_purchase_lastOccurrence": '2018-01-01'
 }
 
 const values = (Object.values(condition));

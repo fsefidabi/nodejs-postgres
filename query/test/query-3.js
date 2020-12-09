@@ -4,10 +4,10 @@ const queryBuilder = require('./testQueryBuilder')
 
 const condition = {
   tags: ['male','vip','L1'],
-  '"userInfo_categories"': ['orange', 'apple'],
+  "userInfo_categories": ['orange', 'apple'],
   event_purchase_count: 2,
   connection: '3G',
-  '"tokenStatus"': 'ALLOWED'
+  "tokenStatus": '%ED'
 }
 
 const values = (Object.values(condition));
