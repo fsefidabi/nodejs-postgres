@@ -21,10 +21,10 @@
   "scripts": {
     "bulk": "node stream-insert/bulk-insert.js",
     "single": "node stream-insert/single-insert.js",
-    "query": "node query/query.js",
-    "query1": "node query/test/query-1.js",
-    "query2": "node query/test/query-2.js",
-    "query3": "node query/test/query-3.js"
+    "query": "node query/json-sql.js",
+    "query1": "node query/simple-query/query-1.js",
+    "query2": "node query/simple-query/query-2.js",
+    "query3": "node query/simple-query/query-3.js"
 
   },
   "keywords": [
