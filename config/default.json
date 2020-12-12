@@ -5,10 +5,11 @@
     "port": 5432,
     "password": "postgres"
   },
-  "Device": {
-    "tableName": "devices"
+  "device": {
+    "tableName": "devices",
+    "tableName_idx": "devices_idx"
   },
-  "Batch-flow": {
+  "bulkFlow": {
     "size": 500
   }
 }

@@ -2,7 +2,7 @@
   "name": "postgres",
   "version": "1.0.0",
   "description": "A node.js module for connecting to postgreSQL database, using pg module.",
-  "main": "lib/utils/createTable.js",
+  "main": "lib/create-table.js",
   "dependencies": {
     "batch2": "^2.0.0",
     "bluebird": "^3.7.2",
@@ -11,7 +11,6 @@
     "mongo-sql": "^6.2.0",
     "pg": "^8.5.1",
     "pg-promise": "^10.8.1",
-    "pino": "^6.7.0",
     "yargs": "^16.1.1"
   },
   "devDependencies": {
@@ -19,19 +18,21 @@
     "standard": "^16.0.3"
   },
   "scripts": {
-    "bulk": "node stream-insert/bulk-insert.js",
-    "single": "node stream-insert/single-insert.js",
-    "query": "node query/json-sql.js",
-    "query1": "node query/simple-query/query-1.js",
-    "query2": "node query/simple-query/query-2.js",
-    "query3": "node query/simple-query/query-3.js"
-
+    "bulk": "node bulk-insert/simple-table.js",
+    "bulk-idx": "node bulk-insert/indexed-table.js -t devices_idx ",
+    "drop": "node lib/drop-table.js",
+    "drop-idx": "node lib/drop-table.js -t devices_idx",
+    "index": "node lib/create-index.js",
+    "query": "node query/query.js",
+    "query-idx": "node query/query.js -t devices_idx"
   },
   "keywords": [
     "postgres",
     "postgreSQL",
     "pg",
-    "database"
+    "database",
+    "bulk",
+    "explain"
   ],
   "author": "Farzaneh Sefidabi",
   "license": "ISC"
