@@ -13,7 +13,7 @@ npm i
 
 ### Use
 
- _Writing "-idx" suffix after each command will connect you to the related table with indexed columns._
+ _Using "-idx" suffix on each command will connect you to the related table with indexed columns._
 
 - **Insert new random rows**
 
