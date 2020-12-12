@@ -21,24 +21,21 @@ Using these commands will automatically generate new table and insert random row
 
 ```js
 npm run bulk
-
-// or to create indexes 
+// or 
 npm run bulk-idx
 ```
 
 - **Query on records**
 ```js
 npm run query
-
-// or to create indexes 
+// or 
 npm run query-idx
 ```
 
 - **Drop / delete a table**
 ```js
 npm run drop
-
-// or to delete table with column indexes 
+// or
 npm run drop-idx
 ```
 
