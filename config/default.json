@@ -1,15 +1,21 @@
 {
-  "dbConfig": {
-    "user": "postgres",
+  "postgresDbConfig": {
     "host": "localhost",
     "port": 5432,
-    "password": "postgres"
+    "user": "postgres",
+    "password": "postgres",
+    "database": "test"
   },
-  "device": {
-    "tableName": "devices",
+  "clickhouseDbConfig": {
+    "host": "localhost",
+    "port": 8123,
+    "database": "test"
+  },
+  "devicesTable": {
+    "tableName": "test",
     "tableName_idx": "devices_idx"
   },
   "bulkFlow": {
-    "size": 500
+    "size": 10000
   }
 }

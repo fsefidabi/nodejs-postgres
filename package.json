@@ -2,30 +2,33 @@
   "name": "postgres",
   "version": "1.0.0",
   "description": "A node.js module for connecting to postgreSQL database, using pg module.",
-  "main": "lib/create-table.js",
+  "main": "lib/postgres/pg-create-table.js",
   "dependencies": {
+    "@apla/clickhouse": "^1.6.4",
     "batch2": "^2.0.0",
     "bluebird": "^3.7.2",
     "chance": "^1.1.7",
     "config": "^3.3.3",
     "lodash": "^4.17.20",
-    "mongo-sql": "^6.2.0",
     "pg": "^8.5.1",
     "pg-promise": "^10.8.1",
     "yargs": "^16.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.14.0",
+    "ava": "^3.14.0",
     "standard": "^16.0.3"
   },
   "scripts": {
-    "bulk": "node bulk-insert/simple-table.js",
-    "bulk-idx": "node bulk-insert/indexed-table.js -t devices_idx ",
-    "drop": "node lib/drop-table.js",
-    "drop-idx": "node lib/drop-table.js -t devices_idx",
-    "index": "node lib/create-index.js",
-    "query": "node query/query.js",
-    "query-idx": "node query/query.js -t devices_idx"
+    "test": "ava",
+    "ch-table": "node lib/clickhouse/ch-create-table.js",
+    "pg-bulk": "node bulk-insert/pg-simple-table.js",
+    "pg-bulk-idx": "node bulk-insert/pg-indexed-table.js -t devices_idx",
+    "ch-bulk": "node bulk-insert/ch.js",
+    "pg-drop": "node lib/postgres/pg-drop-table.js",
+    "pg-drop-idx": "node lib/postgres/pg-drop-table.js -t devices_idx",
+    "ch-drop": "node lib/clickhouse/ch-drop-table.js",
+    "query": "node query/pg-query.js",
+    "query-idx": "node query/pg-query.js -t devices_idx"
   },
   "keywords": [
     "postgres",

@@ -1,51 +1,42 @@
-# Node.js & PostgreSQL 
+# PostgreSQL $ ClickHouse database 
 
-A simple Node.js module which connects to postgres database, using 'node-postgres' and supports bulk insert.
+Simple Node.js modules that connect to postgres or clickhouse database, using 'node-postgres' and '@apla/clickhouse' packages.
 
-
-### Quick Start
+## Quick Start
 
  ```
-git clone https://github.com/fsefidabi/postgres-node.git
+git clone https://github.com/fsefidabi/postgres-clickhouse.git
 
 npm i
   ```
 
-### Use
+## Use
 
- _Using "-idx" suffix on each command will connect you to the related table with indexed columns._
+### Connect to postgres database
 
-- **Insert new random rows**
+ _1. Using "-idx" suffix on each command will connect you to the related table with indexed columns._ Example: for insert batch data into indexed table: `npm run pg-bulk-idx`
 
-Using these commands will automatically generate new table and insert random rows into created table.
+ _2. Using these commands will automatically generate a new table and insert random rows into created table._
 
-```js
-npm run bulk
-// or 
-npm run bulk-idx
-```
+- Insert new random rows `npm run pg-bulk`
 
-- **Query on records**
-```js
-npm run query
-// or 
-npm run query-idx
-```
+- Query on records `npm run query`
 
-- **Drop / delete a table**
-```js
-npm run drop
-// or
-npm run drop-idx
-```
+- Drop / delete a table `npm run pg-drop`
 
- In case you want to create column indexes on your own table manually, you can use ```npm run index```.
+---
+
+### Connect to clickhouse database
+
+- Create a new table ``` npm run ch-table```
+
+- Insert new random rows `npm run ch-bulk`
+
+- Drop / delete a table `npm run ch-drop`
 
 
-> Configuration options:
+> Configuration options in both postgres and clickhouse databases:
 > 
 > Table name: -t _my_table_ (default value: _devices_)
 > 
-> Batch size: --bs _1000_ (default value: _500_)
-> 
-> Number of inserting rows in each 'npm run bulk' command: -n _1000_ (default value: _1.000.000_)
+> Batch size: --bs _1000_ (default value: _10000_)
