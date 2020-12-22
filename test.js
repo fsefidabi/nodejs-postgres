@@ -2,9 +2,9 @@ const test = require('ava')
 const SqlBuilder = require('./lib/sql-builder')
 
 test('should convert mongo-style object to SQL queries.', t => {
-  t.is(query1, `select "count(*)" from "devices" where "tags" = ($1) and "launchCount" > ($2) and "deviceModel" in ($3)`)
-  // t.is(query2, `select "count(*)" from "devices" where "launchTime" = ($1) and "launchCount" < ($2) or ("deviceModel" in ($3) and "appId" = ($4))`)
-  // t.is(query3, `select "id", "launchCount" from "devices" where "launchCount" = ($1) and "osVersion" like ($2) and "launchCount" = ($3) or ("userInfo_categories" in ($4))`)
+  t.is(query1, `select count(*) from "devices" where ("tags" = ($1)) and ("launchCount" > ($2)) and ("deviceModel" in ($3))`)
+  t.is(query2, `select count(*) from "devices" where ("launchTime" = ($1)) and ("launchCount" < ($2)) or (("deviceModel" in ($3)) and ("appId" = ($4)))`)
+  t.is(query3, `select "id", "launchCount" from "devices" where ("launchCount" = ($1)) and ("osVersion" like ($2)) and ("launchCount" = ($3)) or (("userInfo_categories" && ($4)))`)
 })
 
 const condition1 = {
@@ -29,10 +29,10 @@ const condition3 = {
   where: {
     launchCount: { $eq: 146 },
     $and: { osVersion: { $like: '1.1.' }, launchCount: 50 },
-    $or: { userInfo_categories: { $in: "['apple']" } }
+    $or: { userInfo_categories: { $has: "['apple']" } }
   }
 }
 
-const query1 = new SqlBuilder(condition1).toQuery()
-// const query2 = new SqlBuilder(condition2).toQuery()
-// const query3 = new SqlBuilder(condition3).toQuery()
+const query1 = SqlBuilder(condition1).toQuery().queryText
+const query2 = new SqlBuilder(condition2).toQuery().queryText
+const query3 = new SqlBuilder(condition3).toQuery().queryText
