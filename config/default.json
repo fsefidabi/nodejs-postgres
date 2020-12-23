@@ -12,7 +12,7 @@
     "database": "test"
   },
   "devicesTable": {
-    "tableName": "test",
+    "tableName": "devices",
     "tableName_idx": "devices_idx"
   },
   "bulkFlow": {
