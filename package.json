@@ -1,7 +1,7 @@
 {
   "name": "postgres-clickhouse",
   "version": "1.0.0",
-  "description": "A node.js module for connecting to postgreSQL database, using pg module.",
+  "description": "A node.js module for connecting to postgres and clickhouse databases.",
   "main": "lib/postgres/pg-create-table.js",
   "dependencies": {
     "@apla/clickhouse": "^1.6.4",
