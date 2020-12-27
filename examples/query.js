@@ -1,7 +1,6 @@
-const queryBuilder = require('../lib/postgres/pg-query-builder')
+const queryBuilder = require('../lib/query-builder')
 
 const condition = {
-  from: "devices",
   where: {
     osVersion: { $like: '1.1.%' },
     launchCount: 90,

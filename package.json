@@ -1,11 +1,11 @@
 {
-  "name": "postgres-clickhouse",
+  "name": "postgres",
   "version": "1.0.0",
-  "description": "A node.js module for connecting to postgres and clickhouse databases.",
-  "main": "lib/postgres/pg-create-table.js",
+  "description": "A node.js module for connecting to postgres",
+  "main": "lib/create-table.js",
   "dependencies": {
-    "@apla/clickhouse": "^1.6.4",
     "batch2": "^2.0.0",
+    "bl": "^4.0.3",
     "bluebird": "^3.7.2",
     "chance": "^1.1.7",
     "config": "^3.3.3",
@@ -20,15 +20,12 @@
   },
   "scripts": {
     "test": "ava",
-    "ch-table": "node lib/clickhouse/ch-create-table.js",
-    "pg-bulk": "node bulk-insert/pg-simple-table.js",
-    "pg-bulk-idx": "node bulk-insert/pg-indexed-table.js -t devices_idx",
-    "ch-bulk": "node bulk-insert/ch.js",
-    "pg-drop": "node lib/postgres/pg-drop-table.js",
-    "pg-drop-idx": "node lib/postgres/pg-drop-table.js -t devices_idx",
-    "ch-drop": "node lib/clickhouse/ch-drop-table.js",
-    "query": "node query/pg-query.js",
-    "query-idx": "node query/pg-query.js -t devices_idx"
+    "bulk": "node examples/bulk-insert.js -t devices",
+    "bulk-idx": "node examples/bulk-insert.js -t devices_idx",
+    "drop": "node lib/drop-table.js",
+    "drop-idx": "node lib/drop-table.js -t devices_idx",
+    "query": "node examples/query.js",
+    "query-idx": "node examples/query.js -t devices_idx"
   },
   "keywords": [
     "postgres",

@@ -1,13 +1,13 @@
 ### Comparison between postgreSQL and ClickHouse performance
-Various amounts of records have been inserted into postgres and clickhouse table, under the same conditions (total number of fields, data types, etc.). 
-Following tables represent their execution time for two different queries.
+Various amounts of records have been inserted into postgres and [clickhouse](https://github.com/fsefidabi/nodejs-clickhouse.git) table, under the same conditions (total number of fields, data types, etc.).
+Two different queries were tested at specific intervals to determine database efficiency. The following tables represent their execution time under different conditions.
 
 
 **Query Conditions:**
-- launchCount < 50
-- launchTime between '2019-05-05' and '2019-05-07'
-- deviceModel like 'Note%'
-- tags (array) contains 'male'
+- "launchCount" < 50
+- "launchTime" between '2019-05-05' and '2019-05-07'
+- "deviceModel" like 'Note%'
+- "tags" contains 'male'
 
 | Number of Rows | postgres (simple table) | postgres (indexed table) | clickhouse |
 | :-------------: |:-------------:| :-----:|:-----:|
@@ -20,7 +20,7 @@ Following tables represent their execution time for two different queries.
 ---
 
 **Query Conditions:**
-- launchCount = 137
+- "launchCount" = 137
 
 | Number of Rows | postgres (simple table) | postgres (indexed table) | clickhouse |
 | :-------------: |:-------------:| :-----:|:-----:|

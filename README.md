@@ -1,11 +1,11 @@
-# PostgreSQL $ ClickHouse database 
+# Node.js & PostgreSQL
 
-Simple Node.js modules that connect to postgres or clickhouse database, using 'node-postgres' and '@apla/clickhouse' packages.
+Simple Node.js module that connects to postgres database, using 'node-postgres' and package and supports bulk insert.
 
 ## Quick Start
 
  ```
-git clone https://github.com/fsefidabi/postgres-clickhouse.git
+git clone https://github.com/fsefidabi/nodejs-postgres.git
 
 npm i
   ```
@@ -14,25 +14,17 @@ npm i
 
 ### Connect to postgres database
 
- _1. Using "-idx" suffix on each command will connect you to the related table with indexed columns._ Example: for insert batch data into indexed table: `npm run pg-bulk-idx`
+ _1. Using these commands will automatically generate a new table and insert random rows into created table._
 
- _2. Using these commands will automatically generate a new table and insert random rows into created table._
+ _2. Using "-idx" suffix on each command will connect you to the related table with indexed columns._
 
-- Insert new random rows `npm run pg-bulk`
+- Insert new random rows `npm run bulk` or `npm run bulk-idx`
 
-- Query on records `npm run query`
+- Query on records `npm run query` or `npm run query-idx`
 
-- Drop / delete a table `npm run pg-drop`
+- Drop / delete a table `npm run drop` or `npm run drop-idx`
 
 ---
-
-### Connect to clickhouse database
-
-- Create a new table ``` npm run ch-table```
-
-- Insert new random rows `npm run ch-bulk`
-
-- Drop / delete a table `npm run ch-drop`
 
 
 > Configuration options in both postgres and clickhouse databases:
