@@ -2,10 +2,10 @@ process.env["NODE_CONFIG_DIR"] = __dirname + "/../config/"
 const { Pool } = require('pg')
 const config = require('config')
 
-const pgDbConfig = config.get('postgresDbConfig');
+const dbConfig = config.get('dbConfig');
 
 (async function createDatabaseIfNotExists () {
-  const pool = new Pool(pgDbConfig)
+  const pool = new Pool(dbConfig)
 
   try {
     await pool.query('CREATE DATABASE test')
@@ -21,6 +21,6 @@ const pgDbConfig = config.get('postgresDbConfig');
   }
 })()
 
-const pool = new Pool(pgDbConfig)
+const pool = new Pool(dbConfig)
 
 module.exports = { pool }

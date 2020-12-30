@@ -1,20 +1,10 @@
 {
-  "postgresDbConfig": {
+  "dbConfig": {
     "host": "localhost",
     "port": 5432,
     "user": "postgres",
     "password": "postgres",
     "database": "test"
-  },
-  "clickhouseDbConfig": {
-    "host": "localhost",
-    "port": 8123,
-    "database": "test"
-  },
-  "amqpConfig": {
-    "username": "hvppmoti",
-      "password": "6tgYEVrx8cKuamLrmWBfKXCXiXAvYaKc",
-    "host": "localhost"
   },
   "devicesTable": {
     "tableName": "devices",
